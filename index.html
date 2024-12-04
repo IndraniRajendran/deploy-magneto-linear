@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Magneto Integrated Player</title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="/index.css">
+    <script src="/index.js" defer=""></script>
+
+</head>
+
+<body>
+    <div id="mount"></div>
+    <iframe id="streamotionGlassIframeManager" src="/iframe-manager/index.html" style="display: none"></iframe>
+
+    <script>// The call to index.js _may_ be deferred, which means it might not be available at time of hitting this point in the page.
+// as such, if that's the case, wait until it's available.
+var init = function() {
+    setTimeout(function() {
+        if (window.streamotionGlass) window.streamotionGlass.init();
+        else init();
+    });
+};
+init();
+</script>
+</body>
+
+</html>

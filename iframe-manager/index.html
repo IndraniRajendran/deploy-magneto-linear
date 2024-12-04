@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Magneto Integrated Player - iframe communication window</title>
+    <script src="/iframe-manager/newrelic-config.js"></script>
+    <script src="/iframe-manager/index.js" defer=""></script>
+</head>
+
+<body>
+    <script>// The call to index.js _may_ be deferred, which means it might not be available at time of hitting this point in the page.
+// as such, if that's the case, wait until it's available.
+var init = function() {
+    setTimeout(function() {
+        if (window.streamotionGlassIframeManager) window.streamotionGlassIframeManager.init();
+        else init();
+    });
+};
+init();
+</script>
+</body>
+
+</html>
